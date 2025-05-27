@@ -75,7 +75,7 @@ FOREIGN KEY (student_id) REFERENCES students(student_id)
 
 **CHAR vs VARCHAR সহজ পার্থক্য**
 
-SQL ডেটাবেজে টেক্সট ডেটা স্টোর করার জন্য `CHAR` এবং `VARCHAR` দুটোই ব্যবহার হয়। তবে এদের মধ্যে কিছু গুরুত্বপূর্ণ পার্থক্য আছে — নিচে তা বাংলায় তুলনা করে দেওয়া হলো:
+SQL ডেটাবেজে টেক্সট ডেটা স্টোর করার জন্য `CHAR` এবং `VARCHAR` দুটোই ব্যবহার হয়। তবে এদের মধ্যে কিছু গুরুত্বপূর্ণ পার্থক্য আছে — নিচে তা তুলনা করে দেওয়া হলো:
 
 | বিষয়         | CHAR                            | VARCHAR                            |
 | ------------ | ------------------------------- | ---------------------------------- |
@@ -100,3 +100,28 @@ username CHAR(10)
 CREATE TABLE users_varchar (
 username VARCHAR(10)
 );
+
+### Question 5: Explain the purpose of the WHERE clause in a SELECT statement.
+
+SELECT Statement ও WHERE Clause এর কাজ নির্দিষ্ট শর্ত পূরণ করে ডাটাবেজ থেকে ডাটা দেখানো। শুধুমাত্র যেগুলো একটি নির্দিষ্ট শর্ত (condition) মেনে চলে, শুধু সেগুলোই রিটার্ন করে। Select ব্যাবহার করে যে টেবিট থেকে ডাটা সংগ্রহ করবে উল্লেখ করে, আর Where শর্ত পূরণ ঐ একই টেবিলের ডাটা ফিল্টার করে
+
+**উদাহরণ**
+ধরা যাক আমাদের এখানে একটি students টেবিল আছে সেখান থেকে শুধুমাত্র যেসব শিক্ষার্থীর বয়স ১৮ বছরের বেশি — শুধু তাদের তথ্য দেখাবে।
+Students
+
+| id  | name   | age | grade |
+| --- | ------ | --- | ----- |
+| 1   | Rahim  | 17  | A     |
+| 2   | Karim  | 19  | B     |
+| 3   | Ayesha | 18  | A     |
+| 4   | Jannat | 20  | C     |
+| 5   | Sakib  | 16  | B     |
+
+SELECT name, age FROM students
+WHERE age > 18;
+
+**Output:**
+| name | age |
+| ------ | --- |
+| Karim | 19 |
+| Jannat | 20 |
